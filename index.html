@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,9 +11,15 @@
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/style.css">
+    
+    <script type="text/javascript">
+        document.onkeydown=function(e){
+            return false;
+        }
+    </script>
 
 </head>
-<body oncontextmenu="return false">
+<body>
     
 <!-- header section starts  -->
 
