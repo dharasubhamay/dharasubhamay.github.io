@@ -347,6 +347,9 @@ export default function Hero() {
             <a href="#contact" className={styles.ctaSecondary}>
               Get in touch
             </a>
+            <a href="mailto:subhamaydhara86@gmail.com" className={styles.ctaHire}>
+              Hire me
+            </a>
           </motion.div>
 
           <motion.div
