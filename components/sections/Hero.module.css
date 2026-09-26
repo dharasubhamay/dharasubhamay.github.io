@@ -225,7 +225,7 @@
   content: '';
   position: absolute;
   top: 0;
-  left: -100%;
+  left: 0;
   width: 60%;
   height: 100%;
   background: linear-gradient(
@@ -236,17 +236,21 @@
     rgba(233, 30, 140, 0.18) 60%,
     transparent 100%
   );
-  transform: skewX(-15deg);
+  transform: translateX(-160%) skewX(-15deg);
   animation: hireShimmer 3s ease-in-out infinite;
   pointer-events: none;
 }
 
 @keyframes hireShimmer {
-  0%   { left: -100%; opacity: 0; }
+  0%   { transform: translateX(-160%) skewX(-15deg); opacity: 0; }
   10%  { opacity: 1; }
-  50%  { left: 160%; opacity: 1; }
+  50%  { transform: translateX(280%) skewX(-15deg); opacity: 1; }
   55%  { opacity: 0; }
-  100% { left: 160%; opacity: 0; }
+  100% { transform: translateX(280%) skewX(-15deg); opacity: 0; }
+}
+
+@media (max-width: 480px) {
+  .ctaHire::before { animation: none; }
 }
 
 @keyframes hirePulse {
