@@ -10,7 +10,7 @@ export const person = {
   location: 'Maharashtra, India',
   email: 'subhamaydhara86@gmail.com',
   github: 'https://github.com/dharasubhamay',
-  linkedin: 'https://linkedin.com/in/subhamay-dhara',
+  linkedin: 'https://www.linkedin.com/in/subhamay-dhara-018b621a2/',
   website: 'https://dharasubhamay.github.io',
 };
 
