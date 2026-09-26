@@ -210,15 +210,16 @@
   padding: 13px 28px;
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--text-secondary);
-  background: var(--bg-surface);
-  border: 1px solid var(--border-strong);
+  color: var(--accent-light);
+  border: 1px solid var(--border-accent);
   border-radius: var(--radius-full);
+  background: var(--accent-dim);
   overflow: hidden;
-  z-index: 0;
-  transition: color var(--dur-base), border-color var(--dur-base),
-              background var(--dur-base), transform var(--dur-base) var(--ease-spring);
-  animation: hirePulse 3s ease-in-out infinite;
+  transition: background var(--dur-base) var(--ease-out),
+              border-color var(--dur-base) var(--ease-out),
+              color var(--dur-base) var(--ease-out),
+              transform var(--dur-fast) var(--ease-spring);
+  animation: hireGlow 3s ease-in-out infinite;
 }
 
 .ctaHire::before {
@@ -226,14 +227,14 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 60%;
+  width: 55%;
   height: 100%;
   background: linear-gradient(
     120deg,
     transparent 0%,
-    rgba(233, 30, 140, 0.18) 40%,
-    rgba(255, 95, 160, 0.32) 50%,
-    rgba(233, 30, 140, 0.18) 60%,
+    rgba(79,125,255,0.15) 40%,
+    rgba(129,159,255,0.3) 50%,
+    rgba(79,125,255,0.15) 60%,
     transparent 100%
   );
   transform: translateX(-160%) skewX(-15deg);
@@ -242,27 +243,22 @@
 }
 
 @keyframes hireShimmer {
-  0%   { transform: translateX(-160%) skewX(-15deg); opacity: 0; }
-  10%  { opacity: 1; }
-  50%  { transform: translateX(280%) skewX(-15deg); opacity: 1; }
-  55%  { opacity: 0; }
-  100% { transform: translateX(280%) skewX(-15deg); opacity: 0; }
+  0%        { transform: translateX(-160%) skewX(-15deg); opacity: 0; }
+  10%       { opacity: 1; }
+  50%       { transform: translateX(300%) skewX(-15deg); opacity: 1; }
+  55%, 100% { transform: translateX(300%) skewX(-15deg); opacity: 0; }
 }
 
-@media (max-width: 480px) {
-  .ctaHire::before { animation: none; }
-}
-
-@keyframes hirePulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(233,30,140,0); border-color: var(--border-strong); }
-  15%       { box-shadow: 0 0 0 3px rgba(233,30,140,0.2); border-color: rgba(233,30,140,0.5); }
-  45%       { box-shadow: 0 0 0 0 rgba(233,30,140,0); border-color: var(--border-strong); }
+@keyframes hireGlow {
+  0%, 100% { border-color: var(--border-accent); box-shadow: none; }
+  15%       { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(79,125,255,0.15); }
+  45%       { border-color: var(--border-accent); box-shadow: none; }
 }
 
 .ctaHire:hover {
-  color: var(--text-primary);
-  border-color: rgba(233,30,140,0.4);
-  background: var(--bg-surface-2);
+  background: rgba(79,125,255,0.2);
+  border-color: var(--accent);
+  color: var(--accent);
   transform: translateY(-2px);
 }
 .ctaHire:active { transform: translateY(0); }
