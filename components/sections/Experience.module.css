@@ -1,0 +1,199 @@
+.section {
+  position: relative;
+  padding: clamp(80px, 10vw, 120px) 0;
+  overflow: hidden;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(79,125,255,0.10) 0%, rgba(233,30,140,0.05) 60%, transparent 100%);
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 48px);
+}
+
+.header {
+  max-width: 600px;
+  margin-bottom: clamp(48px, 6vw, 72px);
+}
+
+.heading {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  margin: 12px 0 16px;
+}
+
+.subheading {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ── Timeline ────────────────────────────────────────────────────────── */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 0 28px;
+}
+
+/* Dot + line column */
+.timelineDot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 6px;
+}
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg-page);
+  box-shadow: 0 0 0 2px var(--accent), 0 0 12px rgba(79,125,255,0.4);
+  flex-shrink: 0;
+}
+.line {
+  flex: 1;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--accent) 0%, var(--border) 100%);
+  margin-top: 10px;
+  margin-bottom: -6px;
+  min-height: 40px;
+  transform-origin: top;
+}
+
+/* Card content */
+.cardContent {
+  padding-bottom: 56px;
+}
+.timeline .card:last-child .cardContent { padding-bottom: 0; }
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.roleInfo { display: flex; flex-direction: column; gap: 4px; }
+
+.roleType {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.roleName {
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+.company {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+.location {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.period { flex-shrink: 0; }
+.periodBadge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--accent-light);
+  background: var(--accent-dim);
+  border: 1px solid var(--border-accent);
+  border-left: 3px solid var(--accent);
+  padding: 5px 12px 5px 10px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.summary {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+/* Bullets */
+.bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.bullet {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 0;
+  align-items: start;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+.bulletDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--coral);
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  transition: color var(--dur-fast), border-color var(--dur-fast);
+}
+.tag:hover {
+  color: var(--accent-light);
+  border-color: var(--border-accent);
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .card { grid-template-columns: 20px 1fr; gap: 0 16px; }
+  .cardTop { flex-direction: column; }
+  .periodBadge { align-self: flex-start; }
+}

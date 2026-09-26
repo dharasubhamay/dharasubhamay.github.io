@@ -1,0 +1,208 @@
+.section {
+  position: relative;
+  padding: clamp(80px, 10vw, 120px) 0 clamp(60px, 8vw, 100px);
+  overflow: hidden;
+}
+
+.bg { position: absolute; inset: 0; pointer-events: none; }
+.bgBand {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, transparent 0%, rgba(233,30,140,0.09) 50%, rgba(79,125,255,0.06) 100%);
+}
+
+.inner {
+  position: relative;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 48px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(48px, 8vw, 96px);
+  align-items: center;
+}
+
+/* ── Left ────────────────────────────────────────────────────────────── */
+.heading {
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.0;
+  color: var(--text-primary);
+  margin: 12px 0 24px;
+}
+.headingAccent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--accent-light) 0%, var(--coral) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.body {
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  color: var(--text-secondary);
+  line-height: 1.78;
+  margin-bottom: 32px;
+  max-width: 48ch;
+}
+
+.timezone {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+  font-family: var(--font-mono);
+}
+.tzDot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--coral);
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(233,30,140,0.6);
+  animation: tzPulse 2.4s ease-in-out infinite;
+}
+@keyframes tzPulse {
+  0%,100% { box-shadow: 0 0 8px rgba(233,30,140,0.6); }
+  50%      { box-shadow: 0 0 16px rgba(233,30,140,0.9); }
+}
+.tzText { color: var(--text-muted); }
+.tzTime { color: var(--text-secondary); font-weight: 500; }
+
+.socialLinks {
+  display: flex;
+  gap: 12px;
+}
+.socialCard {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 9px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface);
+  transition: color var(--dur-base), border-color var(--dur-base),
+              background var(--dur-base), transform var(--dur-fast) var(--ease-spring);
+}
+.socialCard:hover {
+  color: var(--accent-light);
+  border-color: var(--border-accent);
+  background: var(--accent-dim);
+  transform: translateY(-2px);
+}
+.socialCard svg:last-child { color: var(--text-muted); }
+
+/* ── Right ───────────────────────────────────────────────────────────── */
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.emailLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+.emailHint {
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+.emailBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  cursor: pointer;
+  transition: border-color var(--dur-base), background var(--dur-base),
+              box-shadow var(--dur-base);
+  text-align: left;
+}
+.emailBtn:hover {
+  border-color: var(--border-accent);
+  background: var(--bg-surface-2);
+  box-shadow: 0 0 40px rgba(79,125,255,0.08);
+}
+
+.emailText {
+  font-family: var(--font-mono);
+  font-size: clamp(0.75rem, 1.3vw, 0.9rem);
+  font-weight: 500;
+  color: var(--accent-light);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.emailIcon {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: color var(--dur-fast);
+}
+.emailBtn:hover .emailIcon { color: var(--accent); }
+
+.copiedLabel {
+  position: absolute;
+  right: 24px;
+  top: -28px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-accent);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.emailAlt {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 12px;
+}
+.mailtoLink {
+  color: var(--text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--dur-fast);
+}
+.mailtoLink:hover { color: var(--accent-light); }
+
+/* ── Responsive ──────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .inner { grid-template-columns: 1fr; gap: 48px; }
+}
+@media (max-width: 480px) {
+  .socialLinks { flex-direction: column; }
+  .emailText { font-size: 0.72rem; }
+}
