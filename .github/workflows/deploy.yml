@@ -34,6 +34,16 @@ jobs:
         env:
           NODE_ENV: production
 
+      - name: Include Google Search Console verification file
+        run: |
+          shopt -s nullglob
+          verification_files=(google*.html)
+          if (( ${#verification_files[@]} == 0 )); then
+            echo "Google verification HTML file not found at the repository root"
+            exit 1
+          fi
+          cp "${verification_files[@]}" out/
+
       - name: Add .nojekyll
         run: touch out/.nojekyll
 
